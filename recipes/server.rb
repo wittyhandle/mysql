@@ -29,5 +29,7 @@ mysql_service node['mysql']['service_name'] do
   remove_test_database node['mysql']['remove_test_database']
   root_network_acl node['mysql']['root_network_acl']
   version node['mysql']['version']
+  cookbook node['mysql']['cookbook']
+  template_source node['mysql']['template_source']
   action :create
 end

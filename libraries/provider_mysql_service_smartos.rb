@@ -78,10 +78,12 @@ class Chef
             template "#{prefix_dir}/etc/my.cnf" do
               if new_resource.template_source.nil?
                 source "#{new_resource.version}/my.cnf.erb"
-                cookbook 'mysql'
               else
                 source new_resource.template_source
               end
+              
+              cookbook new_resource.cookbook.nil? ? 'mysql' : new_resource.cookbook
+              
               owner 'mysql'
               group 'mysql'
               mode '0600'
